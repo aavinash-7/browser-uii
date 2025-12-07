@@ -1,6 +1,6 @@
 import Bbn from './Bbn.jsx';
 
-function ComponentTitle({ title, para, logo, id, status, onToggle,onRemove, theme }) {
+function ComponentTitle({ title, para, logo, id, status, onToggle, onRemove, theme }) {
   const isDark = theme === "dark";
 
   return (
@@ -13,9 +13,10 @@ function ComponentTitle({ title, para, logo, id, status, onToggle,onRemove, them
           padding: "20px",
           backgroundColor: isDark ? "#252638" : "#EDEDED",
           color: isDark ? "white" : "black",
-          transition: "0.3s" // smooth hover animation
+          transition: "0.3s"
         }}
       >
+
         <div
           style={{
             display: "flex",
