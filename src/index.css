@@ -77,10 +77,24 @@ body.dark{
 .ext {
   display: flex;
   justify-content: space-between;
-  text-align: center;
+  
   margin: 50px 0 30px 0;
   flex-wrap: wrap;
 }
+
+
+.card-hover {
+  border: 2px solid transparent;
+  
+}
+
+.card-hover:hover {
+  border: 2px solid #FFFFFF; /* White border on hover */
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 18px rgba(255, 255, 255, 0.25);
+}
+
+
 
 @media (max-width: 600px) {
   .ext{

@@ -30,7 +30,7 @@ function App() {
     document.body.className = theme;
   }, [theme]);
 
-  const allComp = [
+  const initialComp = [
     { id: "check-devlens", logo: logodev, title: "DevLens", para: "Quickly inspect page layouts and visualize element boundaries." },
     { id: "check-stylespy", logo: stylespy, title: "StyleSpy", para: "Quickly inspect page layouts and visualize element boundaries." },
     { id: "check-speedboost", logo: speedboost, title: "SpeedBoost", para: "Quickly inspect page layouts and visualize element boundaries." },
@@ -45,7 +45,14 @@ function App() {
     { id: "check-consoleplus", logo: consoleplus, title: "ConsolePlus", para: "Quickly inspect page layouts and visualize element boundaries." },
   ];
 
-  const filteredBoxes = allComp.filter((box) => {
+  // Make these removable
+  const [cards, setCards] = useState(initialComp);
+
+  const handleRemove = (id) => {
+    setCards(prev => prev.filter(card => card.id !== id));
+  };
+
+  const filteredCards = cards.filter((box) => {
     if (filter === "active") return checkboxStates[box.id];
     if (filter === "inactive") return !checkboxStates[box.id];
     return true;
@@ -55,8 +62,9 @@ function App() {
     <div>
       <Header toggleTheme={toggleTheme} theme={theme} />
       <Extension setFilter={setFilter} filter={filter} theme={theme} />
-      <div className="cards" style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-        {filteredBoxes.map((box) => (
+
+      <div className="cards" style={{ display: "flex", flexWrap: "wrap", gap: "10px",justifyContent: "center" }}>
+        {filteredCards.map((box) => (
           <ComponentTitle
             theme={theme}
             key={box.id}
@@ -66,16 +74,16 @@ function App() {
             para={box.para}
             status={checkboxStates[box.id] || false}
             onToggle={() =>
-              setCheckboxStates((prev) => ({
+              setCheckboxStates(prev => ({
                 ...prev,
-                [box.id]: !prev[box.id],
+                [box.id]: !prev[box.id]
               }))
             }
+            onRemove={handleRemove} // <-- Added here
           />
         ))}
       </div>
     </div>
   );
 }
-
-export default App;
+export default App; 
