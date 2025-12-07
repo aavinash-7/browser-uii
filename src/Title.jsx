@@ -8,7 +8,7 @@ function ComponentTitle({ title,para,logo,id,status,onToggle,theme}) {
    <div
   className="div1-title"
   style={{
-    width: "23rem",
+    width: "22rem",
     borderRadius: "10px",
     padding: "20px",
     backgroundColor: isDark ? "#252638" : "#EDEDED",
